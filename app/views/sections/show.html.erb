@@ -2,6 +2,7 @@
 
 <h1><%= @section.name %></h1>
 
+<p><%= link_to "Add Business", new_business_path %></p>
 <p><%= link_to "Edit", edit_section_path(@section) %></p>
 <p><%= link_to "Delete", section_path(@section),
                         :data => {:confirm => "Seguro?",
