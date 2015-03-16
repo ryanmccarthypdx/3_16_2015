@@ -19,6 +19,7 @@ class SectionsController < ApplicationController
 
   def show
     @section = Section.find(params[:id])
+    @businesses = @section.businesses
   end
 
   def edit

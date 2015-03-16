@@ -5,16 +5,17 @@ class BusinessesController < ApplicationController
   end
 
   def new
-    @section = params[:section]
+    @section = Section.find(params[:section_id])
     @business = Business.new
     render :new
   end
 
   def create
-    @business = Business.new(business_params)
+    @section = Section.find(params[:section_id])
+    @business = @section.businesses.new(business_params)
     if @business.save
       flash[:notice] = "New Business Successfully Added"
-      redirect_to businesses_path(@business)
+      redirect_to section_path(@section)
     else
       render :new
     end
@@ -28,7 +29,7 @@ class BusinessesController < ApplicationController
  private
 
  def business_params
-   params.require(:business).permit(:name, :address, :phone, :website)
+   params.require(:business).permit(:name, :address, :phone, :section_id, :website)
  end
 
 end

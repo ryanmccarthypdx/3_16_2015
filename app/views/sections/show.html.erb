@@ -1,9 +1,13 @@
 <% content_for(:title, @section.name ) %>
 
-<h1><%= @section.name %></h1>
+<h1>Businesses for: <%= @section.name %></h1>
+<ul>
+  <% @section.businesses.each do |business| %>
+    <li><%= business.name %></li>
+  <% end %>
+</ul>
 
-<p><%= link_to "Add Business", new_business_path(@section) %></p>
-<p><%= link_to "Edit", edit_section_path(@section) %></p>
+<p><%= link_to "Add Business", new_section_business_path(@section) %></p><p><%= link_to "Edit", edit_section_path(@section) %></p>
 <p><%= link_to "Delete", section_path(@section),
                         :data => {:confirm => "Seguro?",
                                        :method => "delete"} %></p>
