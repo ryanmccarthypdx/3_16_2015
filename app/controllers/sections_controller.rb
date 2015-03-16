@@ -24,6 +24,11 @@ class SectionsController < ApplicationController
     render :show
   end
 
+  def edit
+    @section = Section.find(params[:id])
+    render :edit
+  end
+
   private
   def section_params
     params.require(:section).permit(:name)
