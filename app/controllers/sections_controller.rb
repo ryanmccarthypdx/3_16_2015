@@ -29,6 +29,18 @@ class SectionsController < ApplicationController
     render :edit
   end
 
+  def destroy
+    @section = Section.find(params[:id])
+    @section.destroy
+    redirect_to sections_path
+  end
+
+  def update
+    @section = Section.find(params[:id])
+    @section.update_attributes(section_params)
+    redirect_to sections_path
+  end
+  
   private
   def section_params
     params.require(:section).permit(:name)
