@@ -1,0 +1,16 @@
+<h1>New Section</h1>
+
+<% if @section.errors.any? %>
+  <h3>Please try again:</h3>
+  <ul>
+    <% @section.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @section do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
