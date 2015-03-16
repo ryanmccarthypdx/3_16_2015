@@ -5,6 +5,7 @@ class BusinessesController < ApplicationController
   end
 
   def new
+    @section = params[:section]
     @business = Business.new
     render :new
   end
